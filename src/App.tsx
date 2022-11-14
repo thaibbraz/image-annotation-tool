@@ -27,27 +27,28 @@ function App() {
     console.log("data inform", data);
     setAnnotations(data);
   };
-  // const downloadTxtFile = () => {
-  //   const element = document.createElement("a");
-  //   const file = new Blob([JSON.stringify(annotations)], {
-  //     type: "text/plain;charset=utf-8",
-  //   });
-  //   element.href = URL.createObjectURL(file);
-  //   element.download = "myFile.txt";
-  //   document.body.appendChild(element);
-  //   element.click();
-  // };
   const download = () => {
     const element = document.createElement("a");
     const file = new Blob([JSON.stringify(annotations)], {
       type: "text/plain;charset=utf-8",
     });
-    const filename = Date.now();
     element.href = URL.createObjectURL(file);
+    const filename = Date.now();
     element.download = String(filename);
     document.body.appendChild(element);
     element.click();
   };
+  // const download = () => {
+  //   const element = document.createElement("a");
+  //   const file = new Blob([JSON.stringify(annotations)], {
+  //     type: "text/plain;charset=utf-8",
+  //   });
+  //   const filename = Date.now();\docs\docker\creating-your-image\
+  //   element.href = URL.createObjectURL(file);
+  //   element.download = String(filename);
+  //   document.body.appendChild(element);
+  //   element.click();
+  // };
   const importAnnotations = (e: any) => {
     const file = e.target.files[0];
     if (!file) {
